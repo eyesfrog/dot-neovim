@@ -1,35 +1,3 @@
-"Basic
-colorscheme molokai
-"set guifont=Inconsolata\ for\ Powerline:h22
-set guifont=Inziu\ losevka\ J:h22 
-set gfw=Inziu\ losevka\ J:h22
-set background=dark
-set number
-set relativenumber
-set expandtab
-set ruler
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set cursorline
-set ignorecase
-set gcr=a:block-blinkon0
-set foldmethod=syntax
-set nofoldenable
-let g:rehash256 = 1
-
-set fileencodings=utf-8,chinese,latin-1 
-
-set nobackup
-set nowritebackup
-set noswapfile
-
-syntax on
-syntax enable
-filetype plugin indent on
-
-let mapleader = ";"
-
 call plug#begin('~/.config/nvim/plug')
 
 Plug 'Valloric/YouCompleteMe'
@@ -45,10 +13,13 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+Plug 'morhetz/gruvbox'
+let g:gruvbox_italic=1
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
-let g:airline_theme="wombat"
+let g:airline_theme="tomorrow"
 
 Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_powerline_separators = 0
@@ -60,8 +31,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 Plug 'honza/vim-snippets'
 
 Plug 'majutsushi/tagbar'
-let tagbar_right=1 
-nnoremap <Leader>tl :TagbarToggle<CR> 
+let tagbar_right=1
+nnoremap <Leader>tl :TagbarToggle<CR>
 let g:tagbar_compact=1
 
 Plug 'scrooloose/nerdcommenter'
@@ -83,4 +54,38 @@ let g:tslime_vars_mapping = '<leader>T'
 Plug 'scrooloose/nerdtree'
 nmap <Leader>tr :NERDTreeToggle<CR>
 
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
+
+"Basic
+color gruvbox
+"color Tomorrow-Night-Eighties
+set background=dark
+set guifont=Menlo\ for\ powerline
+
+set number
+set relativenumber
+set expandtab
+set ruler
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set cursorline
+set ignorecase
+set gcr=a:block-blinkon0
+set foldmethod=syntax
+set nofoldenable
+let g:rehash256 = 1
+
+set fileencodings=utf-8,chinese,latin-1
+"Directories for swp files
+set nobackup
+set nowritebackup
+set noswapfile
+
+syntax on
+syntax enable
+filetype plugin indent on
+
+let mapleader = ";"
