@@ -12,6 +12,8 @@ let g:ycm_seed_identifiers_with_syntax=1
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_python_binary_path = '/usr/bin/python3'
+
 
 Plug 'morhetz/gruvbox'
 let g:gruvbox_italic=1
@@ -56,6 +58,8 @@ nmap <Leader>tr :NERDTreeToggle<CR>
 
 Plug 'Yggdroot/indentLine'
 
+Plug 'chilicuil/vim-sml-coursera'
+
 call plug#end()
 
 "Basic
@@ -89,3 +93,19 @@ syntax enable
 filetype plugin indent on
 
 let mapleader = ";"
+
+" <F5>编译和运行C程序
+map <F5> :call CompileRunClang()<CR>
+func! CompileRunClang()
+    exec "w"
+    exec "!clang % -o %<"
+    exec "! ./%<"
+endfunc
+
+" <F6>编译和运行C++程序
+map <F6> :call CompileRunCpp()<CR>
+func! CompileRunCpp()
+    exec "w"
+    exec "!clang++ % -o %<"
+    exec "! ./%<"
+endfunc
