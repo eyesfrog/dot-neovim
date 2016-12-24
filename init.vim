@@ -42,6 +42,9 @@ Plug 'vim-scripts/paredit.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Mizuchi/STL-Syntax'
 Plug 'vim-scripts/a.vim'
+Plug 'lervag/vimtex'
+
+
 " *.cpp 和 *.h 间切换
 nmap <Leader>ch :A<CR>
 " 子窗口中显示 *.cpp 或 *.h
@@ -76,17 +79,21 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set cursorline
+set scrolloff=10
 set ignorecase
 set gcr=a:block-blinkon0
 set foldmethod=syntax
 set nofoldenable
 let g:rehash256 = 1
-
 set fileencodings=utf-8,chinese,latin-1
+
 "Directories for swp files
 set nobackup
 set nowritebackup
 set noswapfile
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 syntax on
 syntax enable
