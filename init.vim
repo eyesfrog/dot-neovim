@@ -13,7 +13,18 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
+Plug 'w0rp/ale'
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+let g:pymode_python = 'python3'
 
 Plug 'morhetz/gruvbox'
 let g:gruvbox_italic=1
@@ -21,7 +32,8 @@ let g:gruvbox_italic=1
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
-let g:airline_theme="tomorrow"
+let g:airline_theme = "tomorrow"
+let g:airline_section_error = '%{ALEGetStatusLine()}'
 
 Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_powerline_separators = 0
@@ -60,8 +72,22 @@ Plug 'scrooloose/nerdtree'
 nmap <Leader>tr :NERDTreeToggle<CR>
 
 Plug 'Yggdroot/indentLine'
-
 Plug 'chilicuil/vim-sml-coursera'
+
+Plug 'eagletmt/neco-ghc'
+Plug 'neovimhaskell/haskell-vim'
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 call plug#end()
 
@@ -100,6 +126,9 @@ syntax enable
 filetype plugin indent on
 
 let mapleader = ";"
+
+inoremap jk <Esc>
+inoremap jj <Esc>
 
 " <F5>编译和运行C程序
 map <F5> :call CompileRunClang()<CR>
